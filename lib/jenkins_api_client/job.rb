@@ -1438,7 +1438,7 @@ module JenkinsApi
           node.remove
         end
         publisher_node = n_xml.search("//publishers").first
-        publisher_node.content = nil if publisher_node.children.empty?
+        publisher_node.content = nil if publisher_node && publisher_node.children && publisher_node.children.empty?
         xml_modified = n_xml.to_xml
         post_config(job_name, xml_modified)
       end
